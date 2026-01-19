@@ -1,0 +1,19 @@
+# --- DEPENDENCIES ---
+node_modules/
+vendor/
+
+# --- ENVIRONMENT & SECRETS ---
+.env
+.env.local
+
+# --- BUILD OUTPUT ---
+dist/
+bin/
+main     # (binary hasil build go)
+main.exe
+
+# --- OS & IDE FILES ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

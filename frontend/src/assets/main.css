@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  /* Kita pindahkan config warna ke sini agar native v4 */
+  --color-background: #F8F9FA;
+  --color-surface: #FFFFFF;
+  
+  --color-primary: #1E293B;
+  --color-secondary: #475569;
+  --color-accent: #0F172A;
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Default Styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+}
