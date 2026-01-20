@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Setup koneksi dasar ke Backend Go
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api/v1', // Sesuai router Go kamu
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1',
   headers: {
     'Content-Type': 'application/json'
   }
