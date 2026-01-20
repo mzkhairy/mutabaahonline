@@ -52,8 +52,6 @@ Download: https://go.dev/dl/
 
 Metode ini sangat disarankan jika Anda ingin menjalankan aplikasi tanpa perlu menginstall Go, Node.js, atau PostgreSQL satu per satu di komputer Anda. Docker akan menjalankan semuanya dalam container yang terisolasi.
 
-### Prerequisites
-
 ### 1. Persiapan
 Pastikan mesin Anda sudah terinstall **Docker** dan **Docker Compose**. Pilih sesuai sistem operasi Anda:
 
