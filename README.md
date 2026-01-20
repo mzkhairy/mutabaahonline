@@ -97,7 +97,9 @@ VITE_API_BASE_URL=http://localhost:8080/api/v1
 
 #### 3. Jalankan Aplikasi
 Buka terminal di folder root proyek, lalu jalankan perintah:
+```
 docker compose -f docker-compose.prod.yml up --build
+```
 (Tunggu hingga proses download image dan build selesai. Proses pertama kali mungkin memakan waktu beberapa menit).
 
 #### 4. Akses Aplikasi
@@ -108,8 +110,9 @@ API Backend: http://localhost:8080
 
 #### 5. Menghentikan Aplikasi
 Tekan Ctrl+C di terminal, atau jalankan perintah:
+```
 docker compose -f docker-compose.prod.yml down
-
+```
 ---
 
 ⚙️ Opsi 2: Instalasi Manual (Tanpa Docker)
@@ -122,12 +125,14 @@ cd mutabaahonline
 2️⃣ Setup Database (PostgreSQL)
 Pastikan PostgreSQL sudah berjalan di komputer Anda. Masuk ke console database dan buat database baru:
 
-SQL
+psql -U postgres
+
 -- Masuk ke psql terminal, lalu jalankan:
 CREATE DATABASE mutabaah_db;
 3️⃣ Konfigurasi Environment (.env)
 Duplikasi file .env.example menjadi .env, lalu sesuaikan isinya dengan konfigurasi komputer Anda:
 
+```
 # --- SERVER CONFIG ---
 APP_ENV=dev
 PORT=8080
@@ -147,15 +152,20 @@ JWT_TTL_MINUTES=43200
 
 # --- FRONTEND ---
 VITE_API_BASE_URL=http://localhost:8080/api/v1
+```
+
 4️⃣ Menjalankan Backend (Go)
 Pastikan Go (Golang) versi terbaru sudah terinstall.
 
 
 # 1. Download dependency (Go Modules)
+```
 go mod tidy
-
+```
 # 2. Jalankan Server
+```
 go run cmd/api/main.go
+```
 ✅ Berhasil: Muncul pesan Server starting on port 8080 dan log migrasi database sukses.
 
 5️⃣ Menjalankan Frontend (Vue.js)
@@ -163,13 +173,17 @@ Pastikan Node.js dan npm sudah terinstall. Buka terminal baru (terminal backend 
 
 
 # 1. Masuk ke folder frontend (jika struktur folder terpisah) atau root
+```
 cd frontend
-
+```
 # 2. Install dependency
+```
 npm install
-
+```
 # 3. Jalankan mode development
+```
 npm run dev
+```
 ✅ Berhasil: Aplikasi dapat diakses di http://localhost:5173/
 
 ---
