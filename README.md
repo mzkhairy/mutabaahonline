@@ -158,11 +158,11 @@ VITE_API_BASE_URL=http://localhost:8080/api/v1
 Pastikan Go (Golang) versi terbaru sudah terinstall.
 
 
-# 1. Download dependency (Go Modules)
+#### 1. Download dependency (Go Modules)
 ```
 go mod tidy
 ```
-# 2. Jalankan Server
+#### 2. Jalankan Server
 ```
 go run cmd/api/main.go
 ```
@@ -172,15 +172,15 @@ go run cmd/api/main.go
 Pastikan Node.js dan npm sudah terinstall. Buka terminal baru (terminal backend jangan ditutup):
 
 
-# 1. Masuk ke folder frontend (jika struktur folder terpisah) atau root
+#### 1. Masuk ke folder frontend (jika struktur folder terpisah) atau root
 ```
 cd frontend
 ```
-# 2. Install dependency
+#### 2. Install dependency
 ```
 npm install
 ```
-# 3. Jalankan mode development
+#### 3. Jalankan mode development
 ```
 npm run dev
 ```
