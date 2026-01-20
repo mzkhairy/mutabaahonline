@@ -10,8 +10,6 @@ Cobalah aplikasi yang sudah berjalan secara langsung di sini:
 
 ---
 
----
-
 ## ✨ Fitur Utama
 - Manajemen data Sekolah/Lembaga
 - Pencatatan mutabaah harian (hafalan, kehadiran, catatan)
@@ -95,25 +93,24 @@ JWT_SECRET=rahasia_lokal_saja
 # --- FRONTEND CONFIG ---
 # Karena dijalankan via Docker Lokal, arahkan ke localhost
 VITE_API_BASE_URL=http://localhost:8080/api/v1
-3. Jalankan Aplikasi
+
+#### 3. Jalankan Aplikasi
 Buka terminal di folder root proyek, lalu jalankan perintah:
-
-
 docker compose -f docker-compose.prod.yml up --build
 (Tunggu hingga proses download image dan build selesai. Proses pertama kali mungkin memakan waktu beberapa menit).
 
-4. Akses Aplikasi
+#### 4. Akses Aplikasi
 Setelah log terminal berhenti bergerak dan tidak ada error:
 
 Web Frontend: Buka browser ke http://localhost (Tidak perlu port :5173, karena Docker menjalankannya di Port 80).
-
 API Backend: http://localhost:8080
 
-5. Menghentikan Aplikasi
+#### 5. Menghentikan Aplikasi
 Tekan Ctrl+C di terminal, atau jalankan perintah:
-
-
 docker compose -f docker-compose.prod.yml down
+
+---
+
 ⚙️ Opsi 2: Instalasi Manual (Tanpa Docker)
 Gunakan cara ini jika Anda ingin menginstall Go, Node.js, dan PostgreSQL secara manual di sistem operasi Anda.
 
