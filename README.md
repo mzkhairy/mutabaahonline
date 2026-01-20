@@ -130,7 +130,6 @@ CREATE DATABASE mutabaah_db;
 3️⃣ Konfigurasi Environment (.env)
 Duplikasi file .env.example menjadi .env, lalu sesuaikan isinya dengan konfigurasi komputer Anda:
 
-Ini, TOML
 # --- SERVER CONFIG ---
 APP_ENV=dev
 PORT=8080
