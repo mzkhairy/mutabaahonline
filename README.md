@@ -16,19 +16,22 @@ Aplikasi ini memudahkan pencatatan **hafalan**, **kehadiran**, dan **kegiatan ha
 
 ---
 
+
 ## 📋 Prerequisites (Prasyarat)
 
 Sebelum memulai, pastikan perangkat Anda telah terinstal software berikut:
 
 ### 1. Go (Golang)
-- **Wajib versi 1.20 atau lebih baru**
+- Wajib versi **1.24.3** atau lebih baru.
+Download: https://go.dev/dl/
 - Cek versi:
   ```bash
   go version
   ```
 
 ### 2. Node.js & npm
-- Gunakan versi **LTS** (v18 atau v20 direkomendasikan)
+- Wajib Versi 22+
+ - Download: https://nodejs.org/en/download/
 - Cek versi:
   ```bash
   node -v
@@ -45,11 +48,56 @@ Sebelum memulai, pastikan perangkat Anda telah terinstal software berikut:
 
 ---
 
-## 🛠️ Instalasi & Konfigurasi (Dari Nol)
+## 🐳 Instalasi & Jalankan via Docker (Lokal)
+
+Metode ini sangat disarankan jika Anda ingin menjalankan aplikasi tanpa perlu menginstall Go, Node.js, atau PostgreSQL satu per satu di komputer Anda. Docker akan menjalankan semuanya dalam container yang terisolasi.
+
+### 1. Persiapan
+Pastikan **Docker Desktop** (Windows/Mac) atau **Docker Engine** (Linux) sudah terinstall dan berjalan.
+
+### 2. Konfigurasi Environment
+Buat file `.env` baru di folder root proyek (sejajar dengan `docker-compose.prod.yml`).
+
+Isi dengan konfigurasi berikut (khusus untuk Docker lokal):
+
+```ini
+# --- DATABASE CONFIG ---
+# Docker akan otomatis membuat database ini saat pertama kali dijalankan
+DB_USER=docker_user
+DB_PASSWORD=docker_password
+DB_NAME=mutabaah_db_docker
+
+# --- SECURITY ---
+JWT_SECRET=rahasia_lokal_saja
+
+# --- FRONTEND CONFIG ---
+# Karena dijalankan di laptop, arahkan ke localhost backend
+VITE_API_BASE_URL=http://localhost:8080/api/v1
+3. Jalankan Aplikasi
+Buka terminal di folder root proyek, lalu jalankan perintah:
+
+Bash
+docker compose -f docker-compose.prod.yml up --build
+(Tunggu hingga proses download dan build selesai)
+
+4. Cara Akses
+Setelah log menunjukkan server berjalan, akses aplikasi melalui browser:
+
+Frontend (Web App): Buka http://localhost
+
+Catatan: Tidak perlu port (seperti :5173), karena Docker menjalankannya di Port 80 menggunakan Nginx (Simulasi Production).
+
+Backend (API): http://localhost:8080
+
+5. Menghentikan Aplikasi
+Tekan Ctrl+C di terminal, atau jalankan perintah ini untuk menghapus container:
+
+Bash
+docker compose -f docker-compose.prod.yml down
+
+## 🛠️ Instalasi & Konfigurasi (Dari Nol) via manual
 
 Ikuti langkah-langkah berikut secara berurutan untuk menjalankan aplikasi di **Localhost**.
-
----
 
 ### 1️⃣ Clone Repository
 
