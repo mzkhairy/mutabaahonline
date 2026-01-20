@@ -93,6 +93,7 @@ JWT_SECRET=rahasia_lokal_saja
 # --- FRONTEND CONFIG ---
 # Karena dijalankan via Docker Lokal, arahkan ke localhost
 VITE_API_BASE_URL=http://localhost:8080/api/v1
+```
 
 #### 3. Jalankan Aplikasi
 Buka terminal di folder root proyek, lalu jalankan perintah:
