@@ -31,7 +31,7 @@ Sebelum memulai, pastikan perangkat Anda telah terinstal software berikut:
 - Wajib versi **1.24.3** atau lebih baru.
 Download: https://go.dev/dl/
 - Cek versi:
-  ```bash
+  ```
   go version
   ```
 
@@ -39,7 +39,7 @@ Download: https://go.dev/dl/
 - Wajib Versi 22+
  - Download: https://nodejs.org/en/download/
 - Cek versi:
-  ```bash
+  ```
   node -v
   npm -v
   ```
@@ -98,7 +98,7 @@ VITE_API_BASE_URL=http://localhost:8080/api/v1
 3. Jalankan Aplikasi
 Buka terminal di folder root proyek, lalu jalankan perintah:
 
-Bash
+
 docker compose -f docker-compose.prod.yml up --build
 (Tunggu hingga proses download image dan build selesai. Proses pertama kali mungkin memakan waktu beberapa menit).
 
@@ -112,13 +112,13 @@ API Backend: http://localhost:8080
 5. Menghentikan Aplikasi
 Tekan Ctrl+C di terminal, atau jalankan perintah:
 
-Bash
+
 docker compose -f docker-compose.prod.yml down
 ⚙️ Opsi 2: Instalasi Manual (Tanpa Docker)
 Gunakan cara ini jika Anda ingin menginstall Go, Node.js, dan PostgreSQL secara manual di sistem operasi Anda.
 
 1️⃣ Clone Repository
-Bash
+
 git clone [https://github.com/mzkhairy/mutabaahonline.git](https://github.com/mzkhairy/mutabaahonline.git)
 cd mutabaahonline
 2️⃣ Setup Database (PostgreSQL)
@@ -153,7 +153,7 @@ VITE_API_BASE_URL=http://localhost:8080/api/v1
 4️⃣ Menjalankan Backend (Go)
 Pastikan Go (Golang) versi terbaru sudah terinstall.
 
-Bash
+
 # 1. Download dependency (Go Modules)
 go mod tidy
 
@@ -164,7 +164,7 @@ go run cmd/api/main.go
 5️⃣ Menjalankan Frontend (Vue.js)
 Pastikan Node.js dan npm sudah terinstall. Buka terminal baru (terminal backend jangan ditutup):
 
-Bash
+
 # 1. Masuk ke folder frontend (jika struktur folder terpisah) atau root
 cd frontend
 
