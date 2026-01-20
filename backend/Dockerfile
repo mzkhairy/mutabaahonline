@@ -5,7 +5,9 @@ WORKDIR /app
 
 # Copy file dependency & vendor
 COPY go.mod go.sum ./
-COPY vendor ./vendor
+
+RUN go mod download
+RUN go mod vendor
 
 # Copy source code (cmd & internal)
 COPY cmd ./cmd
