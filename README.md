@@ -4,6 +4,12 @@
 
 Aplikasi ini memudahkan pencatatan **hafalan**, **kehadiran**, dan **kegiatan harian siswa** secara digital, terintegrasi antara **Admin**, **Guru**, dan **Murid** dalam satu sistem.
 
+## 🌐 Live Demo
+Cobalah aplikasi yang sudah berjalan secara langsung di sini:
+👉 **[http://103.127.133.92/](http://103.127.133.92/)**
+
+---
+
 ---
 
 ## ✨ Fitur Utama
@@ -48,37 +54,37 @@ Download: https://go.dev/dl/
 
 ---
 
-## 🐳 Instalasi & Jalankan via Docker (Lokal)
+## 🚀 Panduan Instalasi (Lokal)
 
-Metode ini sangat disarankan jika Anda ingin menjalankan aplikasi tanpa perlu menginstall Go, Node.js, atau PostgreSQL satu per satu di komputer Anda. Docker akan menjalankan semuanya dalam container yang terisolasi.
+Untuk menjalankan aplikasi ini di komputer Anda (Localhost), Anda bisa memilih salah satu dari dua metode di bawah ini:
 
-### 1. Persiapan
-Pastikan mesin Anda sudah terinstall **Docker** dan **Docker Compose**. Pilih sesuai sistem operasi Anda:
+1.  **Via Docker** (⭐️ **Sangat Disarankan**: Lebih mudah, bersih, dan tidak perlu install banyak *tools*).
+2.  **Via Manual** (Untuk keperluan *development* mendalam).
 
-* **Windows & Mac:**
-    * Download & Install **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**.
-    * *Catatan untuk Windows:* Pastikan fitur **WSL 2** (Windows Subsystem for Linux) sudah aktif agar performa maksimal.
-* **Linux (Ubuntu/Debian/VPS):**
-    * Gunakan script instalasi otomatis resmi dari Docker. Jalankan perintah ini di terminal:
-        ```bash
-        curl -fsSL [https://get.docker.com](https://get.docker.com) -o get-docker.sh
-        sudo sh get-docker.sh
-        ```
+---
 
-**Verifikasi Instalasi:**
-Buka terminal/CMD dan jalankan perintah berikut untuk memastikan Docker sudah siap:
-```bash
-docker compose version
+### 🐳 Opsi 1: Instalasi via Docker (Recommended)
 
+Metode ini akan menjalankan Database, Backend, dan Frontend sekaligus dalam container terisolasi.
 
-### 2. Konfigurasi Environment
-Buat file `.env` baru di folder root proyek (sejajar dengan `docker-compose.prod.yml`).
+#### 1. Persiapan (Prerequisites)
+Pastikan komputer Anda sudah terinstall **Docker** dan **Docker Compose**.
 
-Isi dengan konfigurasi berikut (khusus untuk Docker lokal):
+* **🖥️ Windows:**
+    * Download & Install **[Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)**.
+    * ⚠️ **PENTING:** Pastikan fitur **WSL 2 (Windows Subsystem for Linux)** sudah diaktifkan di Windows Anda agar Docker berjalan stabil dan cepat.
+* **🍎 Mac:**
+    * Download & Install **[Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)**.
+* **🐧 Linux:**
+    * Install via terminal: `curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh`
+
+#### 2. Konfigurasi Environment
+Buat file baru bernama `.env` di folder root proyek (sejajar dengan `docker-compose.prod.yml`).
+Salin konfigurasi berikut:
 
 ```ini
 # --- DATABASE CONFIG ---
-# Docker akan otomatis membuat database ini saat pertama kali dijalankan
+# Docker akan otomatis membuat database & user ini
 DB_USER=docker_user
 DB_PASSWORD=docker_password
 DB_NAME=mutabaah_db_docker
@@ -87,151 +93,87 @@ DB_NAME=mutabaah_db_docker
 JWT_SECRET=rahasia_lokal_saja
 
 # --- FRONTEND CONFIG ---
-# Karena dijalankan di laptop, arahkan ke localhost backend
+# Karena dijalankan via Docker Lokal, arahkan ke localhost
 VITE_API_BASE_URL=http://localhost:8080/api/v1
 3. Jalankan Aplikasi
 Buka terminal di folder root proyek, lalu jalankan perintah:
 
 Bash
 docker compose -f docker-compose.prod.yml up --build
-(Tunggu hingga proses download dan build selesai)
+(Tunggu hingga proses download image dan build selesai. Proses pertama kali mungkin memakan waktu beberapa menit).
 
-4. Cara Akses
-Setelah log menunjukkan server berjalan, akses aplikasi melalui browser:
+4. Akses Aplikasi
+Setelah log terminal berhenti bergerak dan tidak ada error:
 
-Frontend (Web App): Buka http://localhost
+Web Frontend: Buka browser ke http://localhost (Tidak perlu port :5173, karena Docker menjalankannya di Port 80).
 
-Catatan: Tidak perlu port (seperti :5173), karena Docker menjalankannya di Port 80 menggunakan Nginx (Simulasi Production).
-
-Backend (API): http://localhost:8080
+API Backend: http://localhost:8080
 
 5. Menghentikan Aplikasi
-Tekan Ctrl+C di terminal, atau jalankan perintah ini untuk menghapus container:
+Tekan Ctrl+C di terminal, atau jalankan perintah:
 
 Bash
 docker compose -f docker-compose.prod.yml down
+⚙️ Opsi 2: Instalasi Manual (Tanpa Docker)
+Gunakan cara ini jika Anda ingin menginstall Go, Node.js, dan PostgreSQL secara manual di sistem operasi Anda.
 
-## 🛠️ Instalasi & Konfigurasi (Dari Nol) via manual
-
-Ikuti langkah-langkah berikut secara berurutan untuk menjalankan aplikasi di **Localhost**.
-
-### 1️⃣ Clone Repository
-
-Buka terminal, lalu jalankan:
-
-```bash
-git clone https://github.com/mzkhairy/mutabaahonline.git
+1️⃣ Clone Repository
+Bash
+git clone [https://github.com/mzkhairy/mutabaahonline.git](https://github.com/mzkhairy/mutabaahonline.git)
 cd mutabaahonline
-```
+2️⃣ Setup Database (PostgreSQL)
+Pastikan PostgreSQL sudah berjalan di komputer Anda. Masuk ke console database dan buat database baru:
 
----
-
-### 2️⃣ Setup Database (Via Terminal)
-
-Pastikan PostgreSQL sudah berjalan.
-
-Masuk ke console PostgreSQL:
-```bash
-psql -U postgres
-```
-
-Buat database baru:
-```sql
+SQL
+-- Masuk ke psql terminal, lalu jalankan:
 CREATE DATABASE mutabaah_db;
-```
+3️⃣ Konfigurasi Environment (.env)
+Duplikasi file .env.example menjadi .env, lalu sesuaikan isinya dengan konfigurasi komputer Anda:
 
-(Opsional) Cek daftar database:
-```sql
-\l
-```
-
-Keluar dari console:
-```sql
-\q
-```
-
----
-
-### 3️⃣ Konfigurasi Environment (`.env`)
-
-Duplikasi file `.env.example` menjadi `.env`:
-
-- **Windows**
-  ```bat
-  copy .env.example .env
-  ```
-- **Mac / Linux**
-  ```bash
-  cp .env.example .env
-  ```
-
-Buka file `.env`, lalu **edit bagian DATABASE_URL**
-(ganti `password123` dengan password PostgreSQL Anda).
-
-Contoh konfigurasi `.env`:
-
-```env
+Ini, TOML
 # --- SERVER CONFIG ---
 APP_ENV=dev
 PORT=8080
 
 # --- DATABASE CONFIG ---
-# Format: postgres://USERNAME:PASSWORD@HOST:PORT/DBNAME?sslmode=disable
-DATABASE_URL=postgres://postgres:rahasia@localhost:5432/mutabaah_db?sslmode=disable
+# Format: postgres://USER:PASSWORD@HOST:PORT/DBNAME
+# Ganti 'password_anda' dengan password postgres di laptop Anda
+DATABASE_URL=postgres://postgres:password_anda@localhost:5432/mutabaah_db?sslmode=disable
 
 # --- MIGRATIONS ---
 RUN_MIGRATIONS=true
 MIGRATIONS_DIR=migrations
 
-# --- AUTH & SECURITY ---
-JWT_SECRET=ganti_dengan_teks_acak_rahasia_anda_disini
+# --- AUTH ---
+JWT_SECRET=ganti_dengan_teks_acak_panjang
 JWT_TTL_MINUTES=43200
 
-# --- FRONTEND CONFIG ---
+# --- FRONTEND ---
 VITE_API_BASE_URL=http://localhost:8080/api/v1
-```
+4️⃣ Menjalankan Backend (Go)
+Pastikan Go (Golang) versi terbaru sudah terinstall.
 
-⚠️ **PENTING:**  
-Pastikan `JWT_SECRET` diganti dengan teks acak yang panjang demi keamanan.
-
----
-
-### 4️⃣ Menjalankan Backend (Go)
-
-Proyek ini menggunakan **Go Modules + Vendor**.
-
-Jalankan perintah berikut di root proyek:
-
-```bash
+Bash
+# 1. Download dependency (Go Modules)
 go mod tidy
-go mod vendor
-go run -mod=vendor cmd/api/main.go
-```
 
-✅ **Tanda berhasil:**
-- Muncul log migrasi database
-- Muncul pesan:
-  ```
-  Server starting on port 8080
-  ```
+# 2. Jalankan Server
+go run cmd/api/main.go
+✅ Berhasil: Muncul pesan Server starting on port 8080 dan log migrasi database sukses.
 
-⚠️ Jangan tutup terminal ini.
+5️⃣ Menjalankan Frontend (Vue.js)
+Pastikan Node.js dan npm sudah terinstall. Buka terminal baru (terminal backend jangan ditutup):
 
----
+Bash
+# 1. Masuk ke folder frontend (jika struktur folder terpisah) atau root
+cd frontend
 
-### 5️⃣ Menjalankan Frontend (Vue.js)
-
-Buka **terminal baru**, lalu jalankan:
-
-```bash
+# 2. Install dependency
 npm install
-npm run dev
-```
 
-✅ **Tanda berhasil:**
-```
-Local: http://localhost:5173/
-```
+# 3. Jalankan mode development
+npm run dev
+✅ Berhasil: Aplikasi dapat diakses di http://localhost:5173/
 
 ---
 
@@ -242,7 +184,11 @@ Buka browser:
 ```
 http://localhost:5173
 ```
+atau
 
+```
+http://localhost
+```
 ---
 
 ### 2️⃣ Daftarkan Sekolah
