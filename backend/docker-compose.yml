@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  mutabaah_db:
+    container_name: mutabaah_db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: zangond_user
+      POSTGRES_PASSWORD: secret_password_mutabaah
+      POSTGRES_DB: mutabaah_db_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - mutabaah_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zangond_user -d mutabaah_db_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mutabaah_api:
+    container_name: mutabaah_api
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      mutabaah_db:
+        condition: service_healthy
+    command: air -c .air.toml
+
+volumes:
+  mutabaah_pg_data:

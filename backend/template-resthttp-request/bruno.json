@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "project-sprint-eloquent",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
