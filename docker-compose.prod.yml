@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # 1. Database PostgreSQL
+  db:
+    image: postgres:15-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    networks:
+      - app_network
+
+  # 2. Backend (Go)
+  backend:
+    build:
+      context: ./backend  # Arahkan ke folder backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      APP_ENV: production
+      PORT: 8080
+      # Koneksi internal docker (hostnya adalah nama service: 'db')
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}?sslmode=disable
+      RUN_MIGRATIONS: "true"
+      MIGRATIONS_DIR: migrations
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_TTL_MINUTES: 43200
+    networks:
+      - app_network
+
+  # 3. Frontend (Vue + Nginx)
+  frontend:
+    build:
+      context: ./frontend # Arahkan ke folder frontend
+      dockerfile: Dockerfile
+      args:
+        # Masukkan URL Backend (VPS IP) agar di-bake ke dalam build Vue
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+volumes:
+  postgres_data:
+
+networks:
+  app_network:
+    driver: bridge
