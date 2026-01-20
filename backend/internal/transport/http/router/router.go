@@ -24,8 +24,10 @@ func CORSMiddleware() gin.HandlerFunc {
 
 		// Daftar Domain Frontend yang diizinkan
 		allowedOrigins := map[string]bool{
-			"http://localhost:5173":                                  true, // Frontend Lokal
-			"https://sauncier-skiagraphically-kaylen.ngrok-free.dev": true, // Ganti dengan URL Frontend Ngrok Anda
+			"http://localhost:5173":    true, // Frontend Lokal
+			"http://localhost":         true,
+			"http://103.127.133.92":    true,
+			"http://103.127.133.92:80": true,
 		}
 
 		// Jika origin ada di daftar allow, set header
