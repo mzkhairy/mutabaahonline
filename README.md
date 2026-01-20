@@ -52,8 +52,26 @@ Download: https://go.dev/dl/
 
 Metode ini sangat disarankan jika Anda ingin menjalankan aplikasi tanpa perlu menginstall Go, Node.js, atau PostgreSQL satu per satu di komputer Anda. Docker akan menjalankan semuanya dalam container yang terisolasi.
 
+### Prerequisites
+
 ### 1. Persiapan
-Pastikan **Docker Desktop** (Windows/Mac) atau **Docker Engine** (Linux) sudah terinstall dan berjalan.
+Pastikan mesin Anda sudah terinstall **Docker** dan **Docker Compose**. Pilih sesuai sistem operasi Anda:
+
+* **Windows & Mac:**
+    * Download & Install **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**.
+    * *Catatan untuk Windows:* Pastikan fitur **WSL 2** (Windows Subsystem for Linux) sudah aktif agar performa maksimal.
+* **Linux (Ubuntu/Debian/VPS):**
+    * Gunakan script instalasi otomatis resmi dari Docker. Jalankan perintah ini di terminal:
+        ```bash
+        curl -fsSL [https://get.docker.com](https://get.docker.com) -o get-docker.sh
+        sudo sh get-docker.sh
+        ```
+
+**Verifikasi Instalasi:**
+Buka terminal/CMD dan jalankan perintah berikut untuk memastikan Docker sudah siap:
+```bash
+docker compose version
+
 
 ### 2. Konfigurasi Environment
 Buat file `.env` baru di folder root proyek (sejajar dengan `docker-compose.prod.yml`).
