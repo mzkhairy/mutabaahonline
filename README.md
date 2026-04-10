@@ -4,10 +4,12 @@
 
 Aplikasi ini memudahkan pencatatan **hafalan**, **kehadiran**, dan **kegiatan harian siswa** secara digital, terintegrasi antara **Admin**, **Guru**, dan **Murid** dalam satu sistem.
 
-## 🌐 Live Demo
-Cobalah aplikasi yang sudah berjalan secara langsung di sini:
-👉 **[http://103.127.133.92/](http://103.127.133.92/)**
+## User Manual & Demo 
 
+> User manual & tampilan web
+- 📘 [View  PDF](./MANUAL OPERASI SISTEM.pdf)
+---
+- ▶️ [Watch Demo (Google Drive)](https://drive.google.com/file/d/1e6atv2E5x0rt1ZRmg3UFSbAN_Umvo6Kr/view?usp=sharing)
 ---
 
 ## ✨ Fitur Utama
