@@ -5,15 +5,17 @@ import (
 	"errors"
 	"mutabaahapi/internal/sessions/entity"
 
-	// Import repo session via interface lokal atau langsung struct (kita pakai struct dulu biar cepet)
-	sessRepo "mutabaahapi/internal/sessions/repository/postgres"
+	// [FIX] Gunakan Interface (repository), BUKAN Postgres struct
+	"mutabaahapi/internal/sessions/repository"
 )
 
 type CreateSession struct {
-	Repo *sessRepo.SessionRepository
+	// [FIX] Ubah tipe data menjadi Interface
+	Repo repository.SessionRepository
 }
 
-func NewCreateSession(r *sessRepo.SessionRepository) *CreateSession {
+// [FIX] Ubah argumen konstruktor menjadi Interface
+func NewCreateSession(r repository.SessionRepository) *CreateSession {
 	return &CreateSession{Repo: r}
 }
 
