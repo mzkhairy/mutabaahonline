@@ -7,8 +7,8 @@ Aplikasi ini memudahkan pencatatan **hafalan**, **kehadiran**, dan **kegiatan ha
 ## User Manual & Demo 
 
 > User manual & tampilan web
-- 📘 [View  PDF](./MANUAL OPERASI SISTEM.pdf)
----
+- 📘 [View PDF](./MANUAL-OPERASI-SISTEM.pdf)
+
 - ▶️ [Watch Demo (Google Drive)](https://drive.google.com/file/d/1e6atv2E5x0rt1ZRmg3UFSbAN_Umvo6Kr/view?usp=sharing)
 ---
 
